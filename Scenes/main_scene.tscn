@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cx33ybsfgte81" path="res://Scripts/main_scene.gd" id="1_6l7je"]
 [ext_resource type="PackedScene" uid="uid://clwxt1hdv77ao" path="res://Scenes/player.tscn" id="1_52fb6"]
+[ext_resource type="PackedScene" uid="uid://b1l0d3c0yv6wh" path="res://Scenes/computer.tscn" id="3_jv6wh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_52fb6"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,4 +37,7 @@ size = Vector3(87.0896, 0.52978516, 85.06152)
 material = SubResource("StandardMaterial3D_2ia5b")
 
 [node name="Player" parent="." unique_id=1525084477 instance=ExtResource("1_52fb6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9418998, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.084557, 0.8496032, 0)
+
+[node name="Computer" parent="." unique_id=726371728 instance=ExtResource("3_jv6wh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.344667, 0, 0)

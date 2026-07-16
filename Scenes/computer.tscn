@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://b1l0d3c0yv6wh"]
+
+[ext_resource type="PackedScene" uid="uid://b7i4aeypaml50" path="res://Assets/old_computer.glb" id="1_4xga7"]
+[ext_resource type="Script" uid="uid://b38uuubfxp7n0" path="res://Scripts/desktop.gd" id="2_iofu4"]
+[ext_resource type="Texture2D" uid="uid://dh0e2etjbrg5a" path="res://Assets/wallpaper.jpeg" id="2_j2xe6"]
+[ext_resource type="StyleBox" uid="uid://cwxbgtsxbq6lg" path="res://Assets/Themes/Classic311/Styles/Button/Normal.tres" id="4_i500x"]
+[ext_resource type="StyleBox" uid="uid://be33dyq0kppj4" path="res://Assets/Themes/Classic311/Styles/Button/Pressed.tres" id="5_ofkbl"]
+[ext_resource type="StyleBox" path="res://Assets/Themes/Classic311/Styles/Button/Hover.tres" id="6_myaep"]
+[ext_resource type="StyleBox" uid="uid://c0pwq1s76g0o8" path="res://Assets/Themes/Classic311/Styles/Button/Disabled.tres" id="7_piu5q"]
+[ext_resource type="StyleBox" path="res://Assets/Themes/Classic311/Styles/Button/Focused.tres" id="8_461db"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xga7"]
+size = Vector3(6.342102, 2.939209, 6.114258)
+
+[node name="Computer" type="Node3D" unique_id=726371728]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1286606560 instance=ExtResource("1_4xga7")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2144922861]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1528917617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76724243, 1.1810981, 0)
+shape = SubResource("BoxShape3D_4xga7")
+
+[node name="Desktop" type="Control" parent="." unique_id=900371825]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_iofu4")
+
+[node name="TextureRect" type="TextureRect" parent="Desktop" unique_id=1331647466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j2xe6")
+
+[node name="ProgramsButtons" type="GridContainer" parent="Desktop" unique_id=759356042]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 437.0
+offset_bottom = 152.0
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="Mail" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=1710104995]
+layout_mode = 2
+
+[node name="btnMail" type="Button" parent="Desktop/ProgramsButtons/Mail" unique_id=1290833318]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_i500x")
+theme_override_styles/pressed = ExtResource("5_ofkbl")
+theme_override_styles/hover = ExtResource("6_myaep")
+theme_override_styles/disabled = ExtResource("7_piu5q")
+theme_override_styles/focus = ExtResource("8_461db")
+text = "📧"
+
+[node name="Label" type="Label" parent="Desktop/ProgramsButtons/Mail" unique_id=1585910763]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "QMail"
+horizontal_alignment = 1
+
+[node name="Notes" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=1183261315]
+layout_mode = 2
+
+[node name="btnNote" type="Button" parent="Desktop/ProgramsButtons/Notes" unique_id=1197568207]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_i500x")
+theme_override_styles/pressed = ExtResource("5_ofkbl")
+theme_override_styles/hover = ExtResource("6_myaep")
+theme_override_styles/disabled = ExtResource("7_piu5q")
+theme_override_styles/focus = ExtResource("8_461db")
+text = " 📝"
+
+[node name="Label" type="Label" parent="Desktop/ProgramsButtons/Notes" unique_id=1442050509]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = " Note "
+horizontal_alignment = 1
+
+[node name="Files" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=1460481138]
+layout_mode = 2
+
+[node name="btnFile" type="Button" parent="Desktop/ProgramsButtons/Files" unique_id=923115887]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_i500x")
+theme_override_styles/pressed = ExtResource("5_ofkbl")
+theme_override_styles/hover = ExtResource("6_myaep")
+theme_override_styles/disabled = ExtResource("7_piu5q")
+theme_override_styles/focus = ExtResource("8_461db")
+text = "📁 "
+
+[node name="Label" type="Label" parent="Desktop/ProgramsButtons/Files" unique_id=117066988]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Files"
+horizontal_alignment = 1
+
+[node name="GUI" type="Control" parent="Desktop" unique_id=618242609]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TaskBar" type="Panel" parent="Desktop/GUI" unique_id=2025052616]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Desktop/GUI/TaskBar" unique_id=2025953402]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 81.0
+offset_bottom = 46.0
+text = "Start"
+
+[node name="File" type="Button" parent="Desktop/GUI/TaskBar" unique_id=1307862704]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 16.0
+offset_right = 800.0
+offset_bottom = 47.0
+text = "File Dialog"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1577712823]
+
+[node name="WindowManager" type="Control" parent="." unique_id=1117115800]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="WindowManager" unique_id=1340369029]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowManager/Panel" unique_id=157389179]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
