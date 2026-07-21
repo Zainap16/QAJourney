@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dt2jpe00od6bl"]
+
+[node name="UI" type="Control" unique_id=230152394]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1845041427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 14.25
+offset_right = -1462.0
+offset_bottom = -647.74915
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GridContainer" unique_id=1534089358]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Checklist:"
+
+[node name="Move" type="HBoxContainer" parent="GridContainer" unique_id=29618456]
+layout_mode = 2
+
+[node name="chbMove" type="CheckBox" parent="GridContainer/Move" unique_id=1821717580]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Move"
+
+[node name="Jump" type="HBoxContainer" parent="GridContainer" unique_id=832895956]
+layout_mode = 2
+
+[node name="chbJump" type="CheckBox" parent="GridContainer/Jump" unique_id=856534040]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Jump"
+
+[node name="CollectCoin" type="HBoxContainer" parent="GridContainer" unique_id=1048917771]
+layout_mode = 2
+
+[node name="chbCollecrCoin" type="CheckBox" parent="GridContainer/CollectCoin" unique_id=1988661327]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Collect Coin"
+
+[node name="OpenDoor" type="HBoxContainer" parent="GridContainer" unique_id=1006754348]
+layout_mode = 2
+
+[node name="chbOpenDoor" type="CheckBox" parent="GridContainer/OpenDoor" unique_id=1350809521]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Open Door"
+
+[node name="FinishLevel" type="HBoxContainer" parent="GridContainer" unique_id=469994877]
+layout_mode = 2
+
+[node name="chbfinishLevel" type="CheckBox" parent="GridContainer/FinishLevel" unique_id=1366960844]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Finish Level Notification"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=188715058]
+visible = false
+layout_mode = 0
+offset_left = 458.0
+offset_top = 238.0
+offset_right = 1297.0
+offset_bottom = 870.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Regression Checklist
+
+☐ Move
+
+☐ Jump
+
+☐ Collect Cube
+
+☐ Button Opens Door
+
+☐ Finish Level"

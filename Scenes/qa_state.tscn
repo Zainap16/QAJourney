@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ewmld31b6s7w"]
+
+[ext_resource type="Script" uid="uid://c4mfd3s6ncpwq" path="res://Scripts/qa_state.gd" id="1_51kht"]
+
+[node name="QAState" type="Node" unique_id=1061025757]
+script = ExtResource("1_51kht")

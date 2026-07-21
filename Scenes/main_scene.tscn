@@ -23,21 +23,27 @@ albedo_color = Color(0.4090784, 0.21273464, 4.813075e-08, 1)
 [node name="MainScene" type="Node3D" unique_id=1262995209]
 script = ExtResource("1_6l7je")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=330632554]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2032870740]
-environment = SubResource("Environment_jv6wh")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=806315958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.529541, 0)
-use_collision = true
-size = Vector3(87.0896, 0.52978516, 85.06152)
-material = SubResource("StandardMaterial3D_2ia5b")
-
 [node name="Player" parent="." unique_id=1525084477 instance=ExtResource("1_52fb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.084557, 0.8496032, 0)
 
 [node name="Computer" parent="." unique_id=726371728 instance=ExtResource("3_jv6wh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.344667, 0, 0)
+
+[node name="MiniGameHolder" type="Node3D" parent="." unique_id=2108349228]
+
+[node name="Office" type="Node3D" parent="." unique_id=202828825]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Office" unique_id=330632554]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Office" unique_id=2032870740]
+environment = SubResource("Environment_jv6wh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Office" unique_id=806315958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.529541, 0)
+use_collision = true
+size = Vector3(87.0896, 0.52978516, 85.06152)
+material = SubResource("StandardMaterial3D_2ia5b")
+
+[node name="OfficeSpawn" type="Marker3D" parent="Office" unique_id=385699467]

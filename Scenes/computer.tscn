@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://b1l0d3c0yv6wh"]
 
 [ext_resource type="PackedScene" uid="uid://b7i4aeypaml50" path="res://Assets/old_computer.glb" id="1_4xga7"]
+[ext_resource type="Script" uid="uid://dn83d2uhghol8" path="res://Scripts/computer.gd" id="1_i500x"]
 [ext_resource type="Script" uid="uid://b38uuubfxp7n0" path="res://Scripts/desktop.gd" id="2_iofu4"]
 [ext_resource type="Texture2D" uid="uid://dh0e2etjbrg5a" path="res://Assets/wallpaper.jpeg" id="2_j2xe6"]
+[ext_resource type="PackedScene" uid="uid://ols8bbewmhrm" path="res://Scenes/platformer.tscn" id="2_ofkbl"]
 [ext_resource type="StyleBox" uid="uid://cwxbgtsxbq6lg" path="res://Assets/Themes/Classic311/Styles/Button/Normal.tres" id="4_i500x"]
 [ext_resource type="StyleBox" uid="uid://be33dyq0kppj4" path="res://Assets/Themes/Classic311/Styles/Button/Pressed.tres" id="5_ofkbl"]
-[ext_resource type="StyleBox" path="res://Assets/Themes/Classic311/Styles/Button/Hover.tres" id="6_myaep"]
+[ext_resource type="StyleBox" uid="uid://dglnbu1rt86m0" path="res://Assets/Themes/Classic311/Styles/Button/Hover.tres" id="6_myaep"]
 [ext_resource type="StyleBox" uid="uid://c0pwq1s76g0o8" path="res://Assets/Themes/Classic311/Styles/Button/Disabled.tres" id="7_piu5q"]
-[ext_resource type="StyleBox" path="res://Assets/Themes/Classic311/Styles/Button/Focused.tres" id="8_461db"]
+[ext_resource type="StyleBox" uid="uid://r42scfox1nxf" path="res://Assets/Themes/Classic311/Styles/Button/Focused.tres" id="8_461db"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xga7"]
 size = Vector3(6.342102, 2.939209, 6.114258)
 
 [node name="Computer" type="Node3D" unique_id=726371728]
+script = ExtResource("1_i500x")
+platformer_scene = ExtResource("2_ofkbl")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1286606560 instance=ExtResource("1_4xga7")]
 
@@ -67,7 +71,7 @@ text = "📧"
 [node name="Label" type="Label" parent="Desktop/ProgramsButtons/Mail" unique_id=1585910763]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "QMail"
+text = "Inbox"
 horizontal_alignment = 1
 
 [node name="Notes" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=1183261315]
@@ -87,13 +91,13 @@ text = " 📝"
 [node name="Label" type="Label" parent="Desktop/ProgramsButtons/Notes" unique_id=1442050509]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = " Note "
+text = "Bug Report"
 horizontal_alignment = 1
 
-[node name="Files" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=1460481138]
+[node name="TestBuild" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=1443927415]
 layout_mode = 2
 
-[node name="btnFile" type="Button" parent="Desktop/ProgramsButtons/Files" unique_id=923115887]
+[node name="btnTestBuild" type="Button" parent="Desktop/ProgramsButtons/TestBuild" unique_id=1219533596]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -102,12 +106,32 @@ theme_override_styles/pressed = ExtResource("5_ofkbl")
 theme_override_styles/hover = ExtResource("6_myaep")
 theme_override_styles/disabled = ExtResource("7_piu5q")
 theme_override_styles/focus = ExtResource("8_461db")
-text = "📁 "
+text = "🎮"
 
-[node name="Label" type="Label" parent="Desktop/ProgramsButtons/Files" unique_id=117066988]
+[node name="Label" type="Label" parent="Desktop/ProgramsButtons/TestBuild" unique_id=1912401999]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Files"
+text = "Test Build"
+horizontal_alignment = 1
+
+[node name="Automation" type="VBoxContainer" parent="Desktop/ProgramsButtons" unique_id=200282938]
+layout_mode = 2
+
+[node name="btnAutomation" type="Button" parent="Desktop/ProgramsButtons/Automation" unique_id=1245437855]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("4_i500x")
+theme_override_styles/pressed = ExtResource("5_ofkbl")
+theme_override_styles/hover = ExtResource("6_myaep")
+theme_override_styles/disabled = ExtResource("7_piu5q")
+theme_override_styles/focus = ExtResource("8_461db")
+text = "🤖"
+
+[node name="Label" type="Label" parent="Desktop/ProgramsButtons/Automation" unique_id=1415689586]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Automation"
 horizontal_alignment = 1
 
 [node name="GUI" type="Control" parent="Desktop" unique_id=618242609]
@@ -147,6 +171,7 @@ text = "File Dialog"
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1577712823]
 
 [node name="WindowManager" type="Control" parent="." unique_id=1117115800]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -161,3 +186,13 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ComputerLabel" type="Label3D" parent="." unique_id=1453904100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1532495, 0)
+billboard = 2
+text = "Press [E]"
+font_size = 80
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="pressed" from="Desktop/ProgramsButtons/TestBuild/btnTestBuild" to="." method="_on_btn_test_build_pressed"]

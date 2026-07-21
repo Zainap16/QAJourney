@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1525084477]
+[node name="Player" type="CharacterBody3D" unique_id=1525084477 groups=["player"]]
 script = ExtResource("1_v0iea")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=929927892]
@@ -17,3 +17,8 @@ shape = SubResource("CapsuleShape3D_v0iea")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=454646784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66279423, -0.14683121)
+
+[node name="BugFoundLabel" type="Label3D" parent="." unique_id=1128569298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3549248, -1.2733852)
+billboard = 2
+text = "BugFoundLabel"

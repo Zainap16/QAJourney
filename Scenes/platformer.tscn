@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ols8bbewmhrm"]
+
+[ext_resource type="Script" uid="uid://d27p5y8pvln2y" path="res://Scripts/platformer.gd" id="1_k0oe1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41awe"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_k0oe1"]
+sky_material = SubResource("ProceduralSkyMaterial_41awe")
+
+[sub_resource type="Environment" id="Environment_6hv7n"]
+background_mode = 2
+sky = SubResource("Sky_k0oe1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h786q"]
+albedo_color = Color(0.23743817, 0.15691772, 0.012213539, 1)
+
+[node name="Platformer" type="Node3D" unique_id=1539246705]
+script = ExtResource("1_k0oe1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=797503029]
+environment = SubResource("Environment_6hv7n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=139222236]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1592920482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4618373, 0)
+use_collision = true
+size = Vector3(29.135742, 1, 31.52832)
+material = SubResource("StandardMaterial3D_h786q")
+
+[node name="wall" type="CSGBox3D" parent="CSGBox3D" unique_id=604716935]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 13.979309, -15.094095)
+visible = false
+use_collision = true
+size = Vector3(29.135742, 1, 31.52832)
+material = SubResource("StandardMaterial3D_h786q")
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=361441731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.776271)
