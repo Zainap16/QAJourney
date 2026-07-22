@@ -47,3 +47,4 @@ size = Vector3(87.0896, 0.52978516, 85.06152)
 material = SubResource("StandardMaterial3D_2ia5b")
 
 [node name="OfficeSpawn" type="Marker3D" parent="Office" unique_id=385699467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.273117, 0, 0)

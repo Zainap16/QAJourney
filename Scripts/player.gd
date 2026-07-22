@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+#signal bug_report_submitted
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -8,15 +8,21 @@ const JUMP_VELOCITY = 4.5
 var look_dir: Vector2
 @onready var camera: Camera3D = $Camera3D
 var camera_sens = 50
-@onready var bug_found_label: Label3D = $BugFoundLabel
+#@onready var bug_found_label: Label3D = $BugFoundLabel
+@onready var bug_report_bug: ColorRect = $BugReportBug
 
 var capMouse = false
 var can_look := true
 var can_move := true
 var can_jump:= true
+@onready var computer: Node3D = $"../Computer"
+@onready var bug_label: Label = $BugReportBug/BugLabel
 
+
+var bug_report_shown := false
 func _ready() -> void:
-	bug_found_label.visible = false
+	#bug_found_label.visible = false
+	bug_report_bug.visible = false
 
 func _physics_process(delta: float) -> void:
 	if !can_move:
@@ -25,7 +31,16 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and can_jump:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+
+		if !can_jump:
+			if !bug_report_shown:
+				bug_report_shown = true
+				show_bug_report("Player unable to Jump")
+			return
+
+		velocity.y = JUMP_VELOCITY
+
 		velocity.y = JUMP_VELOCITY
 
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -58,8 +73,25 @@ func _rotate_camera(delta: float, sens_mod:float = 1.0):
 	rotation.y -= look_dir.x * camera_sens * delta
 	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod * delta, -1.5,1.5)
 	look_dir = Vector2.ZERO
+	
 func update_build():
-	bug_found_label.text = "Bug Detetced: Jump"
-	bug_found_label.visible = true
+	#bug_found_label.text = "Bug Detetced: Jump"
+	#bug_report_bug.visible = true
 	can_jump = QaState.current_build != QaState.Build.BUILD_1
 	
+func show_bug_report(title):
+	can_move = false
+	can_look = false
+
+	bug_report_bug.visible = true
+	bug_label.text = title
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func exit_bug_report():
+	can_move = true
+	can_look = true
+	bug_report_bug.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_submit_button_pressed() -> void:
+	#var computer = get_tree().get_first_node_in_group("Computer")
+	computer.exit_platformer()

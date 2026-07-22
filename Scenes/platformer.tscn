@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ols8bbewmhrm"]
 
 [ext_resource type="Script" uid="uid://d27p5y8pvln2y" path="res://Scripts/platformer.gd" id="1_k0oe1"]
+[ext_resource type="PackedScene" uid="uid://brtne4hrdt8l4" path="res://Scenes/coin.tscn" id="2_k0oe1"]
+[ext_resource type="PackedScene" uid="uid://bt6c472nmtnel" path="res://Scenes/switch.tscn" id="3_6hv7n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41awe"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,3 +45,9 @@ material = SubResource("StandardMaterial3D_h786q")
 
 [node name="SpawnPoint" type="Marker3D" parent="." unique_id=361441731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.776271)
+
+[node name="Coin" parent="." unique_id=1826213520 instance=ExtResource("2_k0oe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2515516, 0, 0)
+
+[node name="Switch" parent="." unique_id=1301798122 instance=ExtResource("3_6hv7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.8444734)

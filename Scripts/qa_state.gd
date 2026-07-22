@@ -10,7 +10,7 @@ enum Build {
 	BUILD_4
 }
 
-var current_build = Build.BUILD_1
+@export var current_build = Build.BUILD_1
 
 #func _on_body_entered(body):
 	#if QAState.current_build == QAState.Build.BUILD_2:

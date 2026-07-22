@@ -59,6 +59,7 @@ func enter_new_world():
 func _on_btn_test_build_pressed() -> void:
 	var platformer = platformer_scene.instantiate()
 	mini_game_holder.add_child(platformer)
+	#player.bug_report_submitted.connect(_on_bug_report_submitted.bind(platformer))
 
 	var spawn = platformer.get_node("SpawnPoint") as Marker3D
 	player.global_position = spawn.global_position
@@ -68,10 +69,17 @@ func _on_btn_test_build_pressed() -> void:
 	computer.visible = false
 	player.update_build()
 	
-#when platformer ends
-#platformer.queue_free()
-#
-#office.visible = true
-#
-#player.global_position = office_spawn.global_position
-#player.global_rotation = office_spawn.global_rotation
+func exit_platformer():
+	if mini_game_holder.get_child_count() > 0:
+		mini_game_holder.get_child(0).queue_free()
+
+	office.visible = true
+	computer.visible = true
+	player.exit_bug_report()
+	player.global_position = office_spawn.global_position
+	player.global_rotation = office_spawn.global_rotation
+
+	player.can_move = true
+	player.can_look = true
+
+	QaState.current_build += 1

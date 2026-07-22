@@ -20,5 +20,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66279423, -0.14683121)
 
 [node name="BugFoundLabel" type="Label3D" parent="." unique_id=1128569298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3549248, -1.2733852)
+visible = false
 billboard = 2
-text = "BugFoundLabel"
+text = "Test Jump"
+
+[node name="BugReportBug" type="ColorRect" parent="." unique_id=880931980]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13803378, 0.13803375, 0.13803375, 1)
+
+[node name="BugLabel" type="Label" parent="BugReportBug" unique_id=955250939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "────────────────────────
+
+❌ Bug Found
+
+Expected:
+Player jumps.
+
+Actual:
+Nothing happens.
+
+
+────────────────────────"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubmitButton" type="Button" parent="BugReportBug" unique_id=2105908015]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -366.0
+offset_right = 147.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Submit Bug Report"
+
+[connection signal="pressed" from="BugReportBug/SubmitButton" to="." method="_on_submit_button_pressed"]
