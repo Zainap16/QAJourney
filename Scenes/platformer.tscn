@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d27p5y8pvln2y" path="res://Scripts/platformer.gd" id="1_k0oe1"]
 [ext_resource type="PackedScene" uid="uid://brtne4hrdt8l4" path="res://Scenes/coin.tscn" id="2_k0oe1"]
 [ext_resource type="PackedScene" uid="uid://bt6c472nmtnel" path="res://Scenes/switch.tscn" id="3_6hv7n"]
+[ext_resource type="PackedScene" uid="uid://dq0ewwvrrhov4" path="res://Scenes/finish_scene.tscn" id="4_h786q"]
+[ext_resource type="PackedScene" uid="uid://dt2jpe00od6bl" path="res://Scenes/ui.tscn" id="5_k5hyf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41awe"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,3 +53,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2515516, 0, 0)
 
 [node name="Switch" parent="." unique_id=1301798122 instance=ExtResource("3_6hv7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.8444734)
+
+[node name="FinishScene" parent="." unique_id=916734090 instance=ExtResource("4_h786q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.573327, 0, 0)
+
+[node name="UI" parent="." unique_id=55747456 instance=ExtResource("5_k5hyf")]

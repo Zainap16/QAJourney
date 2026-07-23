@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ces3uqtm83bk7" path="res://Scripts/ui.gd" id="1_jxero"]
 
-[node name="UI" type="CanvasLayer" unique_id=55747456]
+[node name="UI" type="CanvasLayer" unique_id=55747456 groups=["checklist"]]
+layer = 0
 script = ExtResource("1_jxero")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1845041427]
