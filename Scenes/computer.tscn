@@ -44,6 +44,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_j2xe6")
 
+[node name="Panel" type="Panel" parent="Desktop/TextureRect" unique_id=1851906096]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ProgramsButtons" type="GridContainer" parent="Desktop" unique_id=759356042]
 layout_mode = 1
 offset_left = 40.0
@@ -168,7 +176,78 @@ offset_right = 800.0
 offset_bottom = 47.0
 text = "File Dialog"
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1577712823]
+[node name="Notification" type="RichTextLabel" parent="Desktop" unique_id=1718182172]
+layout_mode = 0
+offset_left = 1370.0
+offset_top = 36.0
+offset_right = 1821.0
+offset_bottom = 100.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "📧 New Email (1)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmailPop" type="Control" parent="Desktop" unique_id=2081546842]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Desktop/EmailPop" unique_id=286223599]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = 76.0
+offset_right = 395.0
+offset_bottom = -163.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5829992, 0.504177, 0.4151653, 1)
+
+[node name="EmailLabel" type="Label" parent="Desktop/EmailPop" unique_id=1689321151]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -327.0
+offset_top = 75.0
+offset_right = 397.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "From: Senior QA Engineer
+Subject:
+Have you considered automation?
+
+Hi Ziah,
+
+You've been manually replaying the same regression tests
+for every new build.
+
+Many of these repetitive tests can be automated.
+
+Click below to unlock the Automation Assistant.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnlockRobotButton" type="Button" parent="Desktop/EmailPop" unique_id=1661425479]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 719.0
+offset_right = 97.0
+offset_bottom = 769.0
+theme_override_font_sizes/font_size = 25
+text = "[Unlock]"
 
 [node name="WindowManager" type="Control" parent="." unique_id=1117115800]
 visible = false
@@ -195,4 +274,6 @@ font_size = 80
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="pressed" from="Desktop/ProgramsButtons/Mail/btnMail" to="." method="_on_btn_mail_pressed"]
 [connection signal="pressed" from="Desktop/ProgramsButtons/TestBuild/btnTestBuild" to="." method="_on_btn_test_build_pressed"]
+[connection signal="pressed" from="Desktop/EmailPop/UnlockRobotButton" to="." method="_on_unlock_robot_button_pressed"]

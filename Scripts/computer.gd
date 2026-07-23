@@ -4,9 +4,13 @@ extends Node3D
 @onready var mini_game_holder: Node3D = $"../MiniGameHolder"
 @onready var office: Node3D = $"../Office"
 @onready var computer: Node3D = $"."
+@onready var email_pop: Control = $Desktop/EmailPop
 
 var player_in_area:= false
 @onready var office_spawn: Marker3D = $"../Office/OfficeSpawn"
+@onready var notification: RichTextLabel = $Desktop/Notification
+@onready var label_build: Label = $Desktop/ProgramsButtons/TestBuild/Label
+
 
 @onready var desktop: Control = $Desktop
 @onready var computer_label: Label3D = $ComputerLabel
@@ -15,6 +19,8 @@ var player_interacted_with_computer:= false
 func _ready() -> void:
 	desktop.visible = false
 	computer_label.visible = false
+	email_pop.visible = false
+	notification.visible = false
 	
 
 func _process(_delta: float) -> void:
@@ -82,4 +88,28 @@ func exit_platformer():
 	player.can_move = true
 	player.can_look = true
 
-	QaState.current_build += 1
+	if QaState.current_build == QaState.Build.BUILD_4:
+		await get_tree().create_timer(1.0).timeout
+		show_email_notification()
+		
+	else:
+		QaState.current_build += 1
+
+
+func _on_btn_mail_pressed() -> void:
+#	open email
+	email_pop.visible = true
+	notification.visible = false
+	
+
+func show_email_notification():
+	notification.visible = true
+
+
+func _on_unlock_robot_button_pressed() -> void:
+#	play automation
+#	maybe disable test build button 
+	email_pop.visible = false
+	label_build.text = "[Run Automated Tests]"
+	print("Show automation")
+	pass

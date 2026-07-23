@@ -97,7 +97,7 @@ func update_build():
 	bug_report_shown = false
 	
 func show_bug_report(title):
-	print("Showing bug report")
+	#print("Showing bug report")
 	can_move = false
 	can_look = false
 
